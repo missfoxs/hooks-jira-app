@@ -1,9 +1,18 @@
 import React from "react";
+import { User } from "./list";
 
-export const SearchPanel = ({ users, params, setParams }) => {
-  
+type SearchPanelProps = {
+  users: User[];
+  params: {
+    name: string;
+    personId: string;
+  };
+  setParams: (params: SearchPanelProps["params"]) => void;
+};
+
+export const SearchPanel = ({ users, params, setParams }: SearchPanelProps) => {
   return (
-    <div>
+    <form>
       <input
         type="text"
         onChange={(evt) =>
@@ -26,6 +35,6 @@ export const SearchPanel = ({ users, params, setParams }) => {
           <option value={user.id}>{user.name}</option>
         ))}
       </select>
-    </div>
+    </form>
   );
 };
